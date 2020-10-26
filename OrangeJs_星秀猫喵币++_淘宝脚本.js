@@ -1244,12 +1244,60 @@ function DoTask() {
                             let W = className("com.uc.webview.export.WebView").findOnce();
                             let WC = className("android.view.View").desc("任务完成").findOnce();
                             let WCs=className("android.view.View").desc("任务已经").findOnce();
+                            let Df=id("com.taobao.taobao:id/weex_render_view").className("android.widget.FrameLayout").findOnce();
                             if (text("网络竟然崩溃了").findOnce() != null && className("android.widget.Button").text("刷新").clickable(true).findOnce() != null) {
                                 className("android.widget.Button").text("刷新").clickable(true).findOnce().click();
                                 toastLog("网络竟然崩溃了，已尝试点击“刷新”按钮");
                                 sleep(3000);
                             }
-                            if (WC != null ||
+                            function ForDone() {
+                                let W = className("com.uc.webview.export.WebView").findOnce();
+                            if (W != null &&
+                                    W.childCount() > 0 &&
+                                    W.child(0).childCount() > 0 &&
+                                    W.child(0).child(0).childCount() > 0 &&
+                                    W.child(0).child(0).child(0).childCount() > 0 &&
+                                    W.child(0).child(0).child(0).child(0).childCount() > 0 &&
+                                    W.child(0).child(0).child(0).child(0).child(0).childCount() > 5) {
+                                    let ji = W.child(0).child(0).child(0).child(0).child(0);
+                                    for (let i = 0; i < ji.childCount(); i++) {
+                                        if (ji.child(i).childCount() > 0 &&
+                                            ji.child(i).childCount() > 0 &&
+                                            ji.child(i).child(0).childCount() > 2 &&
+                                            ji.child(i).child(0).child(2).childCount() > 0 &&
+                                            ji.child(i).child(0).child(2).child(0).childCount() > 0 &&
+                                            ji.child(i).child(0).child(2).child(0).child(0).text().search("完成") >= 0 ||
+                                            ji.child(i).childCount() > 0 &&
+                                            ji.child(i).childCount() > 0 &&
+                                            ji.child(i).child(0).childCount() > 2 &&
+                                            ji.child(i).child(0).child(2).childCount() > 0 &&
+                                            ji.child(i).child(0).child(2).child(0).childCount() > 0 &&
+                                            ji.child(i).child(0).child(2).child(0).child(0).text().search("开小差") >= 0) {
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                            if (ForDone() == true ||
+                            Df != null &&
+                                Df.childCount() > 0 &&
+                                Df.child(0).childCount() > 0 &&
+                                Df.child(0).child(0).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).childCount() > 1 &&
+                                Df.child(0).child(0).child(0).child(1).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).childCount() > 2 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).child(0).childCount() > 2 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).child(0).child(2).childCount() > 1 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).child(0).child(2).child(1).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).child(0).child(2).child(1).child(0).childCount() > 0 &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).child(0).child(2).child(1).child(0).child(0).desc() != null &&
+                                Df.child(0).child(0).child(0).child(1).child(0).child(0).child(0).child(0).child(2).child(0).child(0).child(2).child(1).child(0).child(0).desc().search("任务") >= 0 ||
+                                WC != null ||
                                 W != null && W.childCount() > 1 &&
                                 W.child(1).childCount() > 0 &&
                                 W.child(1).child(0).childCount() > 0 &&
